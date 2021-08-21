@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}club_detail.html{% endblock %}
+{% block content %}
+
+<br/><h2><b>{{club.name}}</b></h2>
+<br/><hr/>
+<div id="clubs">
+        <br/>
+        <ul style="list-style-type: circle;">
+        <li style="color:#8C8C8C">지역 : {{club.city}}</li>
+        <li style="color:#8C8C8C">문의번호 : {{club.tel}}</li><br/>
+        <li>내용 : {{club.content}}</li>
+        <li>모임장소 : {{club.location}}</li>
+        <li>모임일시 : {{club.riding_dt}}</li><br/>
+        </ul>
+</div>
+{% endblock %}

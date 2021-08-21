@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}cyclediary_detail.html{% endblock %}
+{% block content %}
+<div style="border:solid 1px black" >
+<br/>
+<h2 align="center">{{object.title}}</h2>
+<br/>
+<h5 align="center">{{object.description}}</h5>
+<hr/>
+
+<p align="center">라이딩일 : {{ object.diary_dt|date:"Y-m-d" }}</p>
+<p style="color:#8C8C8C" align="center">작성일 : {{ object.create_dt|date:"Y-m-d" }}
+    수정일 : {{ object.modify_dt|date:"Y-m-d" }}</p>
+<hr/>
+
+<br>
+
+<div style="margin:20px;">
+ {{ object.content|linebreaks }}
+</div>
+<hr/>
+
+<p align="center">
+    {% if object.get_previous %}
+    <a href="{{ object.get_previous.get_absolute_url }}" title="View previous diary">
+        <i class="fas fa-arrow-circle-left"></i>&nbsp; {{ object.get_previous }}
+    </a>
+    {% endif %}
+&nbsp;&nbsp;|&nbsp;&nbsp;
+    {% if object.get_next %}
+    <a href="{{ object.get_next.get_absolute_url }}" title="View next diary">
+        {{ object.get_next }} &nbsp;<i class="fas fa-arrow-circle-right"></i>
+     </a>
+     {% endif %}
+</p>
+    </div>
+{% endblock %}
+

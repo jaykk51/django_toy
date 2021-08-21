@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}cyclenumber_search.html{% endblock %}
+{% block content %}
+<h1><b>Cycle Number Search</b></h1>
+    <br/>
+    <form action="." method="post">{% csrf_token %}
+        &nbsp;{{form.as_table}}
+        &nbsp;<input type="submit" value="검색" class="btn btn-secondary btn-sm"> <br/><hr/>
+    </form>
+
+    {% if object_list %}
+    {% for cyclenumber in object_list %}
+
+    <li class="list-group-item"><h5 style="display:inline"><b>
+        <a style="color:#353535" href='{{ cyclenumber.get_absolute_url }}'>
+            {{ cyclenumber.number }}</a></b></h5><br/>
+    <p><i>소유주 : {{ cyclenumber.name }}<i/><p/>
+    </li>
+
+    {% endfor %} <hr/>
+    {% elif search_term %}
+    <b><i>Search Word({{ search_term }}) Not Found! </i></b>
+    {% endif %}
+{% endblock %}

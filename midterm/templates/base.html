@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Daily Cycle Diary [DCD]{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    {% block extra-style %}{% endblock %}
+</head>
+
+<body style="padding-top:90px;">
+
+<nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-md">
+    <span class="navbar-brand mx-5 mb-0 font-weight-bold font-italic">
+        <a class="nav-link text-white" href="{% url 'home' %}">
+            <i class="fas fa-bicycle">&nbsp;</i>데일리 사이클 다이어리</a></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+
+            <li class="nav-item mx-1 btn btn-secondary btn-sm">
+                <a class="nav-link text-white" href="{% url 'cyclenumber:index' %}">자전거 조회</a></li>
+            <li class="nav-item mx-1 btn btn-secondary btn-sm">
+                <a class="nav-link text-white" href="{% url 'cyclediary:index' %}">라이딩 일기</a></li>
+            <li class="nav-item mx-1 btn btn-secondary btn-sm">
+                <a class="nav-link text-white" href="{% url 'club:index' %}">동호회 모임</a></li>
+            <li class="nav-item mx-1 btn btn-secondary btn-sm">
+                <a class="nav-link text-white" href="{% url 'map:index' %}">자전거 도로 소개</a></li>
+
+
+
+
+            </li>
+             <li class="nav-item dropdown mx-1 btn btn-secondary btn-sm">
+                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">검색</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'cyclenumber:search' %}"> 자전거 검색</a>
+                    <a class="dropdown-item" href="{% url 'cyclediary:search' %}">라이딩일기 검색</a>
+                    <a class="dropdown-item" href="{% url 'club:search' %}">동호회모임 검색</a>
+                    <a class="dropdown-item" href="{% url 'map:search' %}">자전거도로 검색</a>
+                </div>
+            </li>
+             </li>
+             <li class="nav-item dropdown mx-1 btn btn-secondary btn-sm">
+                <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">etc.</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'cyclediary:cyclediary_archive' %}">라이딩일기 아카이브</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+
+{% block footer %}{% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/c998a172fe.js"></script>
+
+{% block extra-script %}{% endblock %}
+
+</body>
+</html>
+

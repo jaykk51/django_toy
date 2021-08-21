@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}cyclediary_all.html{% endblock %}
+{% block content %}
+<br/> <!-- style="border-top:1px solid #B2CCFF" -->
+<h2><b>라이딩 일기</b></h2>
+    <br/><hr/>
+    {% for diary in diaries %}
+<li class="list-group-item"><p style="color:#BDBDBD">작성일 : {{ diary.create_dt|date:"Y-m-d" }} &nbsp;
+            수정일 : {{ diary.modify_dt|date:"Y-m-d" }} </p>
+        <h5><b><a href='{{ diary.get_absolute_url}}' style="color:#353535">{{ diary.title }}</a></b></h5>
+<p style="color:#8C8C8C" > <i>{{ diary.description }}</i></p>
+<b style="color:#8C8C8C" >라이딩일 : {{ diary.diary_dt|date:"Y-m-d" }}</b></li>
+
+    {% endfor %}
+<hr/>
+<br>
+<div>
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+        {% endif %}
+
+    </span>
+</div>
+
+
+{% endblock %}

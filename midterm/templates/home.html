@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Daily Cycle Diary{% endblock %}
+
+{% block extra-style %}
+<style type="text/css">
+.home-image {
+    background-image: url("{% static 'img/cycle1.jpg' %}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 500px;
+    border-top: 0px
+    border-bottom: 0px
+    padding: 20px 0 0 20px;
+}
+.title {
+    position: relative;
+    top: 15%;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+
+}
+.powered {
+    position: relative;
+    top: 65%;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: -1px 0 #000, 0 1px #000, 0 0px #000, 0 -1px #000;
+    font-style: italic;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="home-image">
+        <h1 class="title">Daily Cycle Diary, DCD</h1>
+        <h4 class="powered"><i class="fas fa-bicycle"></i>  Everyday, Everywhere With The Bicycle</h4>
+    </div>
+
+    <hr />
+
+
+    <div  style="border:1px solid #D5D5D5" class="row text-center">
+        <div style="border:1px solid #D5D5D5"  class="col-sm-6">
+            <a style="color:black  "  href="{% url 'cyclenumber:index' %}"><h3>자전거 조회</h3></a>
+            <p>각각의 자전거에는 영어 숫자 조합으로 이루어진 <br/>
+                고유의 차대번호가 새겨져 있습니다. <br/>
+                내 소유 자전거의 신분증을 기록해주세요.</p>
+        </div>
+
+        <div style="border:1px solid #D5D5D5"  class="col-sm-6">
+            <a style="color:black;" href="{% url 'cyclediary:index' %}"><h3>라이딩 일기</h3></a>
+            <p>이동거리, 시간, 느낀 점 등 <br/>
+                자유롭게 라이딩 일기를 작성해보세요.<br/></p>
+        </div>
+<br/>
+        <div style="border:1px solid #D5D5D5"  class="col-sm-6">
+            <a style="color:black;" href="{% url 'club:index' %}"><h3>동호회 모임</h3></a>
+            <p>각 지역 동호회 정모, 번개 일정을 기록합니다. <br/>
+                함께하면 더욱 즐거운 라이딩! <br/>
+                단체라이딩시 안전수칙을 반드시 준수해주세요.</p>
+        </div>
+
+        <div style="border:1px solid #D5D5D5"  class="col-sm-6">
+            <a style="color:black;" href="{% url 'map:index' %}"><h3>자전거도로 소개</h3></a>
+            <p>전국 곳곳에 펼쳐진 자전거 도로 <br/>
+                자전거를 타고 전국을 여행해보는건 어떨까요? <br/></p>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-dark">
+    <div class="text-white font-italic text-right mr-5">Copyright &copy; 201533719 김재희</div>
+</footer>
+{% endblock %}
+

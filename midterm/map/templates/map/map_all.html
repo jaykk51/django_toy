@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}map_all.html{% endblock %}
+{% block content %}
+
+<br/>
+<h2><b>자전거 도로 소개</b></h2>
+<br><hr/>
+  {% for map in maps %}
+<li class="list-group-item"><h5 style="display:inline"><b>
+    <a style="color:#353535" target="_blank" href="{{ map.url }}">
+        {{ map.title }}</a></b></h5><br/><br/>
+    <p><i>{{ map.country }}<i/><p/>
+   {% endfor %}
+    </li><hr/><br>
+<div>
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

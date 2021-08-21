@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}cyclediary_search.html{% endblock %}
+{% block content %}
+<h1><b>Cycle Diary Search</b></h1>
+    <br/>
+    <form action="." method="post">{% csrf_token %}
+        &nbsp;{{form.as_table}}
+        &nbsp;<input type="submit" value="검색" class="btn btn-secondary btn-sm"> <br/><hr/>
+    </form>
+
+    {% if object_list %}
+    {% for diary in object_list %}
+
+    <li class="list-group-item"><b style="color:#8C8C8C" >
+        라이딩일 : {{ diary.diary_dt|date:"Y-m-d" }}</b>
+    <h5><b><a href='{{ diary.get_absolute_url}}' style="color:#353535">
+        {{ diary.title }}</a></b></h5>
+    <p style="color:#8C8C8C" >{{ diary.description }}</p>
+</li>
+    {% endfor %}
+<hr/>
+    {% elif search_term %}
+    <b><i>Search Word({{ search_term }}) Not Found! </i></b>
+    {% endif %}
+<br>
+
+{% endblock %}
+

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}cyclenumber_all.html{% endblock %}
+{% block content %}
+
+
+<br/>
+<h2><b>자전거 조회 (차대번호 리스트)</b></h2>
+
+<br/><hr/>
+  {% for cyclenumber in cyclenumbers %}
+<li class="list-group-item"><h5 style="display:inline"><b>
+    <a style="color:#353535" href='{{ cyclenumber.id }}'>
+    {{ cyclenumber.number }}</a></b></h5><br/>
+    <p><i>소유주 : {{ cyclenumber.name }}</i></p>
+   {% endfor %}
+    </li><hr/>
+<br>
+<div>
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+        {% endif %}
+
+    </span>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}club_search.html{% endblock %}
+{% block content %}
+<h1><b>Club Search</b></h1>
+    <br/>
+    <form action="." method="post">{% csrf_token %}
+        &nbsp;{{form.as_table}}
+        &nbsp;<input type="submit" value="검색" class="btn btn-secondary btn-sm"> <br/><hr/>
+    </form>
+    {% if object_list %}
+    {% for club in object_list %}
+   <li class="list-group-item"><h5 style="display:inline"><b>
+       <a style="color:#353535" href='{{ club.get_absolute_url}}'>
+           {{ club.name }}</a></b></h5><br/><br/>
+        <p><i>모임장소 : {{ club.location }}<i/><p/>
+       <p><i>모임일시 : {{ club.riding_dt }}<i/><p/></li>
+    {% endfor %}<hr/>
+    {% elif search_term %}
+    <b><i>Search Word({{ search_term }}) Not Found! </i></b>
+    {% endif %}
+{% endblock %}

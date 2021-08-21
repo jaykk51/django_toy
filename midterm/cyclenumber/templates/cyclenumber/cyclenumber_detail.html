@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}cyclenumber_detail.html{% endblock %}
+{% block content %}
+<br/>
+<h2>{{cyclenumber.number}}</h2>
+<div id="cyclenumbers">
+<br/><hr/><br/>
+        <ul>
+        <li style="list-style-type: circle;">
+                <h5 style="display:inline">소유주 : {{cyclenumber.name}}</h5></li>
+        <li style="list-style-type: circle;">전화번호 : {{cyclenumber.tel}}</li>
+        <li style="list-style-type: circle;">브랜드 : {{cyclenumber.brand}}</li>
+        <li style="list-style-type: circle;">모델명 : {{cyclenumber.modelname}}</li>
+        </ul>
+</div>
+{% endblock %}
+

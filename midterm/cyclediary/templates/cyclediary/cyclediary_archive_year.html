@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}cyclediary_archive_year.html{% endblock %}
+{% block content %}
+
+    <h1>Diary Archive for {{ year|date:"Y" }}</h1>
+
+{% for date in date_list %}
+<a href="{% url 'cyclediary:cyclediary_month_archive' year|date:'Y' date|date:'b' %}"
+   class="btn btn-outline-secondary btn-sm mx-1">
+    {{ date|date:"M" }}</a>
+{% endfor %}
+<br><br>
+
+<div>
+    <ul>
+        {% for diary in object_list %}
+        <li class="h5">
+            {{ diary.diary_dt|date:"Y-m-d" }}&emsp;
+            <a style="color:#353535" href="{{ diary.get_absolute_url }}">
+                <strong>{{ diary.title }}</strong></a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+{% endblock %}

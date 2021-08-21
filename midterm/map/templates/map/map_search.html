@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}map_search.html{% endblock %}
+{% block content %}
+<h1><b>Map Search</b></h1>
+    <br/>
+    <form action="." method="post">{% csrf_token %}
+        &nbsp;{{form.as_table}}
+        &nbsp;<input type="submit" value="검색" class="btn btn-secondary btn-sm"> <br/><hr/>
+    </form>
+    {% if object_list %}
+    {% for map in object_list %}
+    <li class="list-group-item"><h5 style="display:inline"><b>
+        <a style="color:#353535" target="_blank" href="{{ map.url }}">
+            {{ map.title }}</a></b></h5><br/><br/>
+        <p><i>{{ map.country }}</i></p></li>
+    {% endfor %}<hr/>
+    {% elif search_term %}
+    <b><i>Search Word({{ search_term }}) Not Found! </i></b>
+    {% endif %}<br>
+{% endblock %}
